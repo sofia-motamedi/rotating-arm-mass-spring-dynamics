@@ -281,7 +281,7 @@ Effects of increasing $k$:
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-<img src="figures/Changing natural length (trajectory of mass).png" alt="Changing natural length trajectory of mass" />
+![Changing natural length trajectory](figures/changing%20natural%20length%20%28trajectory%20of%20mass%29.png)
 
 https://github.com/user-attachments/assets/ac8bd464-99c1-42e3-8be2-9fc7a8debdde
 
@@ -301,7 +301,7 @@ Effects of increasing $L_0$:
 - $\Omega = 1.5\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-<img src="figures/Changing angular velocity (trajectory of mass).png" alt="Changing angular velocity trajectory of mass" />
+![Changing angular velocity trajectory](figures/changing%20angular%20velocity%20%28trajectory%20of%20mass%29.png)
 
 https://github.com/user-attachments/assets/0b54ccd6-6753-4c26-aace-541b05ab70c2
 
