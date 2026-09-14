@@ -260,7 +260,7 @@ Qualitative effects of increasing mass:
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-<img src="figures/Changing spring constant (trajectory of mass).png" alt="Changing spring constant trajectory of mass" />
+![Changing spring constant trajectory](figures/changing%20spring%20constant%20%28trajectory%20of%20mass%29.png)
 
 https://github.com/user-attachments/assets/1513f706-f0de-4e09-9aee-093d24ac2dc1
 
@@ -281,9 +281,9 @@ Effects of increasing $k$:
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-![Trajectory of mass — increased natural length](figures/trajectory_m1_k10_L0.7_O1_r0_0.4_v0_0.1.png)
+<img src="figures/Changing natural length (trajectory of mass).png" alt="Changing natural length trajectory of mass" />
 
-[Trajectory of mass — increased natural length (MP4)](videos/trajectory_m1_k10_L0.7_O1_r0_0.4_v0_0.1.mp4)
+https://github.com/user-attachments/assets/ac8bd464-99c1-42e3-8be2-9fc7a8debdde
 
 Effects of increasing $L_0$:
 
@@ -301,9 +301,9 @@ Effects of increasing $L_0$:
 - $\Omega = 1.5\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-![Trajectory of mass — increased angular velocity](figures/trajectory_m1_k10_L0.5_O1.5_r0_0.4_v0_0.1.png)
+<img src="figures/Changing angular velocity (trajectory of mass).png" alt="Changing angular velocity trajectory of mass" />
 
-[Trajectory of mass — increased angular velocity (MP4)](videos/trajectory_m1_k10_L0.5_O1.5_r0_0.4_v0_0.1.mp4)
+https://github.com/user-attachments/assets/0b54ccd6-6753-4c26-aace-541b05ab70c2
 
 Effects of increasing $\Omega$:
 
