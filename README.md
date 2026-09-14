@@ -240,7 +240,7 @@ https://github.com/user-attachments/assets/e300eaf7-1c4b-420f-ae83-840a9fe1806b
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-<img src="figures/Changing mass (trajectory of mass).png" alt="Changing mass trajectory of mass" />
+![Changing mass trajectory](figures/changing%20mass%20%28trajectory%20of%20mass%29.png)
 
 https://github.com/user-attachments/assets/4630e491-821f-48e8-9afd-8e19b6befd06
 
