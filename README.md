@@ -357,6 +357,7 @@ Summary of mass effects on $r(t)$ and $\dot{r}(t)$:
 ---
 
 ### 7.4 Increased spring constant
+
 ![Changing spring constant radial position](figures/changing%20spring%20constant%20%28radial%20position%29.png)
 
 ![Changing spring constant radial velocity](figures/changing%20spring%20constant%20%28radial%20velocity%29.png)
@@ -407,19 +408,19 @@ Note: Because the rod is driven at constant angular velocity by an external moto
 
 ### 8.1 Baseline case
 
-![Energy E(t) — baseline](figures/E_t_m1_k10_L0.5_O1_r0_0.4_v0_0.1.png)
+<img src="figures/Initial conditions (Energy).png" alt="Initial conditions Energy" />
 
 ---
 
 ### 8.2 Changed initial conditions
 
-![Energy E(t) — changed IC](figures/E_t_m1_k10_L0.5_O1_r0_0.6_v0_0.0.png)
+<img src="figures/Changing r and r-prime (Energy).png" alt="Changing r and r-prime radial Energy" />
 
 ---
 
 ### 8.3 Increased mass
 
-![Energy E(t) — increased mass](figures/E_t_m2_k10_L0.5_O1_r0_0.4_v0_0.1.png)
+![Changing mass Energy](figures/changing%20mass%20%28Energy%29.png)
 
 Effects of increasing mass on energy:
 
@@ -430,7 +431,7 @@ Effects of increasing mass on energy:
 
 ### 8.4 Increased spring constant
 
-![Energy E(t) — increased k](figures/E_t_m1_k15_L0.5_O1_r0_0.4_v0_0.1.png)
+![Changing spring constant Energy](figures/changing%20spring%20constant%20%28Energy%29.png)
 
 Effects of increasing $k$:
 
