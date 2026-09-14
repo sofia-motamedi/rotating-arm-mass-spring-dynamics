@@ -1,9 +1,5 @@
 # Mass–Spring System on a Rotating Arm
 
-> Numerical Computations Project — Sofia Motamedi (40111039)  
-> Original title in Persian: «جرم و فنر متصل به چرخ و فلک (Mass-Spring System on a Rotating Arm)»
-
----
 
 ## 1. Physical problem: Mass–spring system on a rotating arm
 
@@ -46,10 +42,11 @@ We consider motion in a vertical plane, with the vertical axis $y$ positive upwa
 When $\theta = 0$, the arm is vertical and pointing downward, so the mass lies on the negative $y$-axis.
 
 The Cartesian coordinates are:
+
 $$x(t) = r \sin(\theta) = r \sin(\Omega t)$$
+
 $$y(t) = -r \cos(\theta) = -r \cos(\Omega t)$$
 
-> “اینجا نکته این است که وقتی 0=0 بازو کاملاً عمودی (به سمت پایین) است، آنگاه ٢ -= y واقع میشود.”
 
 ---
 
@@ -57,8 +54,8 @@ $$y(t) = -r \cos(\theta) = -r \cos(\Omega t)$$
 
 We first compute the velocity components by differentiating $x(t)$ and $y(t)$:
 
-$$\dot{x} = \frac{d}{dt}[r \sin(\Omega t)] = \dot{r} \sin(\Omega t) + r \Omega \cos(\Omega t)$$
-$$\dot{y} = \frac{d}{dt}[-r \cos(\Omega t)] = -\dot{r} \cos(\Omega t) + r \Omega \sin(\Omega t)$$
+$$\dot{x} = \frac{d}{dt}[r \cos(\Omega t)] = \dot{r} \cos(\Omega t) - r \Omega \sin(\Omega t)$$
+$$\dot{y} = \frac{d}{dt}[r \sin(\Omega t)] = -\dot{r} \sin(\Omega t) + r \Omega \cos(\Omega t)$$
 
 Then:
 $$\dot{x}^2 + \dot{y}^2 = \dot{r}^2 + r^2 \Omega^2$$
@@ -118,7 +115,6 @@ $$m \ddot{r} - \left[ m r \Omega^2 - k (r - L_0) + m g \cos(\Omega t) \right] = 
 So the equation of motion is:
 $$\ddot{r} = r \Omega^2 - \frac{k}{m} (r - L_0) + g \cos(\Omega t)$$
 
-> “پس معادله حركت به شكل زير میشود: "=rQ^2-k/m(r-10)+g cos(Qt)”
 
 Note: $\theta(t) = \Omega t$ is prescribed by an external motor, so we do not derive a separate dynamical equation for $\theta$.
 
@@ -214,7 +210,7 @@ Below are the figures corresponding to different parameter sets and initial cond
 
 #### Trajectory figure
 
-![Trajectory of mass — baseline](figures/trajectory_m1_k10_L0.5_O1_r0_0.4_v0_0.1.png)
+![Initial_conditions_(trajectory_of_mass)](figures/Initial_conditions_(trajectory_of_mass).png)
 
 #### Trajectory video (MP4)
 
