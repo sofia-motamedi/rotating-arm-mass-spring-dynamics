@@ -336,15 +336,17 @@ Again, replace the file paths with your actual figures.
 
 ### 7.2 Changed initial conditions
 
-![RK4 solution: r(t) — changed IC](figures/r_t_m1_k10_L0.5_O1_r0_0.6_v0_0.0.png)
-![RK4 solution: r_dot(t) — changed IC](figures/rdot_t_m1_k10_L0.5_O1_r0_0.6_v0_0.0.png)
+<img src="figures/Changing r and r-prime (radial position).png" alt="Changing r and r-prime radial position" />
+
+<img src="figures/Changing r and r-prime (radial velocity).png" alt="Changing r and r-prime radial velocity" />
 
 ---
 
 ### 7.3 Increased mass
 
-![RK4 solution: r(t) — increased mass](figures/r_t_m2_k10_L0.5_O1_r0_0.4_v0_0.1.png)
-![RK4 solution: r_dot(t) — increased mass](figures/rdot_t_m2_k10_L0.5_O1_r0_0.4_v0_0.1.png)
+![Changing mass radial position](figures/changing%20mass%20%28radial%20position%29.png)
+
+![Changing mass radial velocity](figures/changing%20mass%20%28radial%20velocity%29.png)
 
 Summary of mass effects on $r(t)$ and $\dot{r}(t)$:
 
@@ -355,8 +357,9 @@ Summary of mass effects on $r(t)$ and $\dot{r}(t)$:
 ---
 
 ### 7.4 Increased spring constant
-![RK4 solution: r(t) — increased k](figures/r_t_m1_k15_L0.5_O1_r0_0.4_v0_0.1.png)
-![RK4 solution: r_dot(t) — increased k](figures/rdot_t_m1_k15_L0.5_O1_r0_0.4_v0_0.1.png)
+![Changing spring constant radial position](figures/changing%20spring%20constant%20%28radial%20position%29.png)
+
+![Changing spring constant radial velocity](figures/changing%20spring%20constant%20%28radial%20velocity%29.png)
 
 Summary of $k$ effects:
 
@@ -368,8 +371,9 @@ Summary of $k$ effects:
 
 ### 7.5 Increased natural length $L_0$
 
-![RK4 solution: r(t) — increased L0](figures/r_t_m1_k10_L0.7_O1_r0_0.4_v0_0.1.png)
-![RK4 solution: r_dot(t) — increased L0](figures/rdot_t_m1_k10_L0.7_O1_r0_0.4_v0_0.1.png)
+![Changing natural length radial position](figures/changing%20natural%20length%20%28radial%20position%29.png)
+
+![Changing natural length radial velocity](figures/changing%20natural%20length%20%28radial%20velocity%29.png)
 
 Summary of $L_0$ effects:
 
@@ -381,8 +385,9 @@ Summary of $L_0$ effects:
 
 ### 7.6 Increased angular velocity $\Omega$
 
-![RK4 solution: r(t) — increased Omega](figures/r_t_m1_k10_L0.5_O1.5_r0_0.4_v0_0.1.png)
-![RK4 solution: r_dot(t) — increased Omega](figures/rdot_t_m1_k10_L0.5_O1.5_r0_0.4_v0_0.1.png)
+![Changing angular velocity radial position](figures/changing%20angular%20velocity%20%28radial%20position%29.png)
+
+![Changing angular velocity radial velocity](figures/changing%20angular%20velocity%20%28radial%20velocity%29.png)
 
 Summary of $\Omega$ effects:
 
