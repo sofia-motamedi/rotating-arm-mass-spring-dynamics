@@ -328,8 +328,9 @@ Again, replace the file paths with your actual figures.
 - $m = 1\ \text{kg}, k = 10\ \text{N/m}, L_0 = 0.5\ \text{m}, \Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m}, \dot{r}(0) = 0.1\ \text{m/s}$
 
-![RK4 solution: r(t) — baseline](figures/r_t_m1_k10_L0.5_O1_r0_0.4_v0_0.1.png)
-![RK4 solution: r_dot(t) — baseline](figures/rdot_t_m1_k10_L0.5_O1_r0_0.4_v0_0.1.png)
+<img src="figures/Initial conditions (radial position).png" alt="Initial conditions radial position" />
+
+<img src="figures/Initial conditions (radial velocity).png" alt="Initial conditions radial velocity" />
 
 ---
 
