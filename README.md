@@ -440,65 +440,12 @@ Effects of increasing $k$:
 
 ---
 
-## 9. How to run the simulation (example)
+### 8.5 Increased natural length $L_0$
 
-Below is an example structure for the Python code (you can adapt it to your actual implementation):
+![Changing natural length Energy](figures/changing%20natural%20length%20%28Energy%29.png)
 
-`python
-import numpy as np
-import matplotlib.pyplot as plt
+---
 
-# Parameters
-m = 1.0      # kg
-k = 10.0     # N/m
-L0 = 0.5     # m
-Omega = 1.0  # rad/s
-g = 9.81     # m/s^2
+### 8.6 Increased angular velocity $\Omega$
 
-# Time settings
-t0, t_end = 0.0, 30.0
-dt = 0.001
-t = np.arange(t0, t_end + dt, dt)
-
-# Initial conditions
-r0 = 0.4     # m
-rdot0 = 0.1  # m/s
-
-def f(t, x1, x2):
-    """Right-hand side of the first-order system."""
-    dx1dt = x2
-    dx2dt = x1 * Omega**2 - (k/m) * (x1 - L0) + g * np.cos(Omega * t)
-    return dx1dt, dx2dt
-
-def rk4_step(t, x1, x2, dt):
-    k1_1, k1_2 = f(t, x1, x2)
-    k2_1, k2_2 = f(t + dt/2, x1 + dt*k1_1/2, x2 + dt*k1_2/2)
-    k3_1, k3_2 = f(t + dt/2, x1 + dt*k2_1/2, x2 + dt*k2_2/2)
-    k4_1, k4_2 = f(t + dt, x1 + dt*k3_1, x2 + dt*k3_2)
-
-    x1_new = x1 + dt * (k1_1 + 2*k2_1 + 2*k3_1 + k4_1) / 6
-    x2_new = x2 + dt * (k1_2 + 2*k2_2 + 2*k3_2 + k4_2) / 6
-    return x1_new, x2_new
-
-# Integration
-r = np.zeros_like(t)
-rdot = np.zeros_like(t)
-r[0], rdot[0] = r0, rdot0
-
-for i in range(len(t) - 1):
-    r[i+1], rdot[i+1] = rk4_step(t[i], r[i], rdot[i], dt)
-
-# Compute x, y
-theta = Omega * t
-x = r * np.sin(theta)
-y = -r * np.cos(theta)
-# Plot trajectory
-plt.figure()
-plt.plot(x, y)
-plt.xlabel('x (m)')
-plt.ylabel('y (m)')
-plt.title('Trajectory of mass')
-plt.axis('equal')
-plt.grid(True)
-plt.savefig('figures/trajectory_m1_k10_L0.5_O1_r0_0.4_v0_0.1.png', dpi=300)
-plt.show()
+![Changing angular velocity Energy](figures/changing%20angular%20velocity%20%28Energy%29.png)
