@@ -226,9 +226,9 @@ https://github.com/user-attachments/assets/9c963e76-f8e7-4a6d-8ebd-96bdc83b8a69
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.6\ \text{m},\ \dot{r}(0) = 0\ \text{m/s}$
 
-![Trajectory of mass — changed initial conditions](figures/trajectory_m1_k10_L0.5_O1_r0_0.6_v0_0.0.png)
+<img src="figures/Changing r and r-prime (trajectory of mass).png" alt="Changing r and r-prime trajectory of mass" />
 
-[Trajectory of mass — changed initial conditions (MP4)](videos/trajectory_m1_k10_L0.5_O1_r0_0.6_v0_0.0.mp4)
+https://github.com/user-attachments/assets/e300eaf7-1c4b-420f-ae83-840a9fe1806b
 
 ---
 
@@ -240,9 +240,9 @@ https://github.com/user-attachments/assets/9c963e76-f8e7-4a6d-8ebd-96bdc83b8a69
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-![Trajectory of mass — increased mass](figures/trajectory_m2_k10_L0.5_O1_r0_0.4_v0_0.1.png)
+<img src="figures/Changing mass (trajectory of mass).png" alt="Changing mass trajectory of mass" />
 
-[Trajectory of mass — increased mass (MP4)](videos/trajectory_m2_k10_L0.5_O1_r0_0.4_v0_0.1.mp4)
+https://github.com/user-attachments/assets/4630e491-821f-48e8-9afd-8e19b6befd06
 
 Qualitative effects of increasing mass:
 - Increased inertia: The mass resists changes in motion more strongly.
@@ -260,9 +260,9 @@ Qualitative effects of increasing mass:
 - $\Omega = 1\ \text{rad/s}$
 - $r(0) = 0.4\ \text{m},\ \dot{r}(0) = 0.1\ \text{m/s}$
 
-![Trajectory of mass — increased spring constant](figures/trajectory_m1_k15_L0.5_O1_r0_0.4_v0_0.1.png)
+<img src="figures/Changing spring constant (trajectory of mass).png" alt="Changing spring constant trajectory of mass" />
 
-[Trajectory of mass — increased spring constant (MP4)](videos/trajectory_m1_k15_L0.5_O1_r0_0.4_v0_0.1.mp4)
+https://github.com/user-attachments/assets/1513f706-f0de-4e09-9aee-093d24ac2dc1
 
 Effects of increasing $k$:
 
