@@ -1,87 +1,216 @@
-# Mass-Spring System on a Rotating Arm
+\frac{\partial\mathcal{L}}{\partial r}
+=
+mr\Omega^2-k(r-l_0)+mg\cos(\Omega t).
+\]",
+    r"Also,
 
-Author: Sofia Motamedilamouki, B.Sc. Physics, Amirkabir University of Technology[span_0](start_span)[span_0](end_span)
+\[
+\frac{\partial\mathcal{L}}{\partial r}
+=
+mr\Omega^2-k(r-l_0)+mg\cos(\Omega t).
+\]"
+)
 
-## Overview
-This project explores the physical dynamics of a mass-spring system connected to a rotating arm, similar to a Ferris wheel mechanism[span_1](start_span)[span_1](end_span). The combination of linear oscillation and rotational motion produces complex dynamical behaviors driven by restoring spring forces, gravity, and centrifugal effects[span_2](start_span)[span_2](end_span).
+# Write Markdown through pypandoc as requested for generated .md files.
+pypandoc.convert_text(
+    readme,
+    "md",
+    format="md",
+    outputfile=str(base / "README.md"),
+    extra_args=["--standalone"],
+)
 
-### System Architecture
-* A massless rigid arm of length $L$ rotates at a constant angular velocity $\Omega$ in the horizontal plane around a fixed center point[span_3](start_span)[span_3](end_span).
-* A point mass $m$ slides without friction along this arm[span_4](start_span)[span_4](end_span).
-* A spring with spring constant $k$ and natural length $l_0$ connects the mass to the center of rotation[span_5](start_span)[span_5](end_span).
+# Copy the extracted figures with the repository-friendly names.
+source_assets = Path("/mnt/data/github_assets")
+for item in source_assets.iterdir():
+    shutil.copy2(item, fig_dir / item.name)
 
-## Lagrangian Formulation
+# Preserve the original uploaded report in docs/.
+shutil.copy2(
+    "/mnt/data/پروژه درس محاسبات عددی.pdf",
+    docs_dir / "numerical_computations_project.pdf"
+)
 
-### Generalized Coordinates
-The system is defined by two generalized coordinates based on its geometry[span_6](start_span)[span_6](end_span):
-1. $r$: The radial distance of the mass from the center of rotation[span_7](start_span)[span_7](end_span).
-2. $\theta$: The angle the arm makes with the downward vertical axis[span_8](start_span)[span_8](end_span). 
+# Put the reconstructed runnable code in src/.
+code = r'''import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
 
-Because the arm rotates at a constant angular velocity, the angle is a known function of time: $\theta(t) = \Omega t$[span_9](start_span)[span_9](end_span). 
 
-In Cartesian coordinates (where the positive y-axis points upwards and $\theta = 0$ is completely vertical downwards), the position of the mass is[span_10](start_span)[span_10](end_span):
-$$x = r\sin(\Omega t)$$
-$$y = -r\cos(\Omega t)$$
+def f(t, y, m, k, l0, Omega, g):
+    r, v = y
+    drdt = v
+    dvdt = r * Omega**2 - (k / m) * (r - l0) + g * np.cos(Omega * t)
+    return np.array([drdt, dvdt])
 
-### Kinetic and Potential Energy
-Taking the time derivatives of $x$ and $y$ yields the velocity components[span_11](start_span)[span_11](end_span):
-$$\dot{x} = \dot{r}\sin(\Omega t) + r\Omega\cos(\Omega t)$$
-$$\dot{y} = -\dot{r}\cos(\Omega t) + r\Omega\sin(\Omega t)$$
 
-Squaring and summing these components gives $\dot{x}^2 + \dot{y}^2 = \dot{r}^2 + r^2\Omega^2$, allowing us to write the kinetic energy ($T$) as[span_12](start_span)[span_12](end_span):
-$$T = \frac{1}{2}m(\dot{r}^2 + r^2\Omega^2)$$
+# System parameters
+m = 1.0
+k = 10.0
+l0 = 0.5
+Omega = 1.0
+g = 9.81
 
-The total potential energy ($V$) comes from two sources—the elastic energy of the spring and gravity[span_13](start_span)[span_13](end_span):
-$$V_{spring} = \frac{1}{2}k(r - l_0)^2$$
-$$V_{gravity} = mgy = -mgr\cos(\Omega t)$$
-$$V = \frac{1}{2}k(r - l_0)^2 - mgr\cos(\Omega t)$$
+# Initial conditions
+r0 = 0.4
+v0 = 0.1
+y0 = np.array([r0, v0])
 
-### Euler-Lagrange Equation
-The Lagrangian is $L = T - V$[span_14](start_span)[span_14](end_span):
-$$L = \frac{1}{2}m(\dot{r}^2 + r^2\Omega^2) - \frac{1}{2}k(r - l_0)^2 + mgr\cos(\Omega t)$$
+# Time settings
+ti = 0.0
+tf = 30.0
+dt = 0.01
 
-Applying the Euler-Lagrange equation for the radial coordinate $r$[span_15](start_span)[span_15](end_span):
-$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{r}}\right) - \frac{\partial L}{\partial r} = 0$$
+t_values = np.arange(ti, tf + dt, dt)
+N = len(t_values)
 
-* Time derivative term: $\frac{\partial L}{\partial \dot{r}} = m\dot{r} \Rightarrow \frac{d}{dt}(m\dot{r}) = m\ddot{r}$[span_16](start_span)[span_16](end_span).
-* Radial derivative term: $\frac{\partial L}{\partial r} = mr\Omega^2 - k(r - l_0) + mg\cos(\Omega t)$[span_17](start_span)[span_17](end_span).
+# Initialize solution array
+y = np.zeros((N, 2))
+y[0] = y0
 
-Setting these equal gives the final second-order differential equation of motion[span_18](start_span)[span_18](end_span):
-$$\ddot{r} = r\Omega^2 - \frac{k}{m}(r - l_0) + g\cos(\Omega t)$$
+# Runge-Kutta 4th order method (RK4)
+for i in range(N - 1):
+    t_current = t_values[i]
+    y_current = y[i]
 
-## Numerical Implementation
-Because $\theta(t)$ is driven by external forces (e.g., a motor) and is a known function of time, it does not require a separate dynamical equation[span_19](start_span)[span_19](end_span). To solve the radial equation of motion, the second-order differential equation is converted into a system of first-order equations by defining $x_1 = r$ and $x_2 = \dot{r}$[span_20](start_span)[span_20](end_span):
-$$\dot{x}_1 = x_2$$
-$$\dot{x}_2 = x_1\Omega^2 - \frac{k}{m}(x_1 - l_0) + g\cos(\Omega t)$$
-Integrator Choice (RK4 vs. Euler):
-This system is evaluated over a 30-second timeframe using a 4th-Order Runge-Kutta (RK4) method rather than a first-order Euler method[span_21](start_span)[span_21](end_span). Euler methods utilize a linear approximation for each time step[span_22](start_span)[span_22](end_span). In dynamical systems highly sensitive to centrifugal and gravitational forces, the error from Euler integration accumulates over time, fundamentally altering the shape of the resulting trajectory[span_23](start_span)[span_23](end_span). RK4 mitigates this by calculating multiple intermediate estimations ($k_1, k_2, k_3, k_4$) per step, providing the accuracy required for long-duration oscillation modeling[span_24](start_span)[span_24](end_span).
+    k1 = f(t_current, y_current, m, k, l0, Omega, g)
+    k2 = f(
+        t_current + dt / 2,
+        y_current + (dt / 2) * k1,
+        m, k, l0, Omega, g
+    )
+    k3 = f(
+        t_current + dt / 2,
+        y_current + (dt / 2) * k2,
+        m, k, l0, Omega, g
+    )
+    k4 = f(
+        t_current + dt,
+        y_current + dt * k3,
+        m, k, l0, Omega, g
+    )
 
-## Simulation Results and Analysis
+    y[i + 1] = y_current + (dt / 6) * (
+        k1 + 2 * k2 + 2 * k3 + k4
+    )
 
-### 1. Baseline System Trajectory
-Parameters: $m = 1 \text{ kg}$, $k = 10 \text{ N/m}$, $l_0 = 0.5 \text{ m}$, $\Omega = 1 \text{ rad/s}$ | Initial Conditions: $r(0) = 0.4 \text{ m}$, $\dot{r}(0) = 0.1 \text{ m/s}$[span_25](start_span)[span_25](end_span)[span_26](start_span)[span_26](end_span).
-![Baseline Static Plot](diagram1.png) 
-![Baseline Animation](animation1.gif)
+# Extract radial position and velocity
+r_values = y[:, 0]
+v_values = y[:, 1]
 
-### 2. Modified Initial Conditions
-Parameters: $m = 1 \text{ kg}$, $k = 10 \text{ N/m}$, $l_0 = 0.5 \text{ m}$, $\Omega = 1 \text{ rad/s}$ | Initial Conditions: $r(0) = 0.6 \text{ m}$, $\dot{r}(0) = 0 \text{ m/s}$[span_27](start_span)[span_27](end_span)[span_28](start_span)[span_28](end_span).
-![Modified IC Static Plot](diagram2.png) 
-![Modified IC Animation](animation2.gif)
+# Convert to Cartesian coordinates
+theta = Omega * t_values
+x_values = r_values * np.sin(theta)
+y_values = -r_values * np.cos(theta)
 
-### 3. Impact of Increased Mass
-Parameters: $m = 2 \text{ kg}$, $k = 10 \text{ N/m}$, $l_0 = 0.5 \text{ m}$, $\Omega = 1 \text{ rad/s}$ | Initial Conditions: $r(0) = 0.4 \text{ m}$, $\dot{r}(0) = 0.1 \text{ m/s}$[span_29](start_span)[span_29](end_span)[span_30](start_span)[span_30](end_span).
-![Increased Mass Static Plot](diagram3.png) 
-![Increased Mass Animation](animation3.gif)
+# Calculate total energy
+E = (
+    0.5 * m * (v_values2 + (r_values * Omega)2)
+    + 0.5 * k * (r_values - l0)**2
+    + m * g * y_values
+)
 
-Physical Analysis:
-Increasing the mass to 2 kg increases the inertia of the system, meaning the mass exhibits greater resistance to changes in its state[span_31](start_span)[span_31](end_span). 
-* Decreased Radial Amplitude: The acceleration caused by the spring's restoring force is proportional to $\frac{1}{m}$[span_32](start_span)[span_32](end_span). A larger mass reduces this acceleration, constraining the variance of $r(t)$ and resulting in a smoother, more uniform trajectory[span_33](start_span)[span_33](end_span).
-* Decreased Oscillation Frequency: The natural frequency of the spring-mass system is $\omega = \sqrt{\frac{k}{m}}$[span_34](start_span)[span_34](end_span). Increasing the mass consequently lowers the frequency of the radial oscillations[span_35](start_span)[span_35](end_span).
+# Plot r(t)
+plt.figure(figsize=(8, 4))
+plt.plot(t_values, r_values)
+plt.xlabel("Time (s)")
+plt.ylabel("Radial position r (m)")
+plt.title("RK4 solution: r(t)")
+plt.grid(True)
+plt.show()
 
-### 4. Additional Parameter Explorations
-* Increased Angular Velocity ($\Omega = 1.5 \text{ rad/s}$):[span_36](start_span)[span_36](end_span)
-  ![Increased Omega](animation6.gif)
-* Increased Spring Constant ($k = 15 \text{ N/m}$):[span_37](start_span)[span_37](end_span)
-  ![Increased Spring Constant](animation4.gif)
-* Increased Natural Length ($l_0 = 0.7 \text{ m}$):[span_38](start_span)[span_38](end_span)
-  ![Increased Length](animation5.gif)
+# Plot r_dot(t)
+plt.figure(figsize=(8, 4))
+plt.plot(t_values, v_values)
+plt.xlabel("Time (s)")
+plt.ylabel("Radial velocity r_dot (m/s)")
+plt.title("RK4 solution: r_dot(t)")
+plt.grid(True)
+plt.show()
+
+# Plot energy versus time
+plt.figure(figsize=(10, 5))
+plt.plot(t_values, E)
+plt.xlabel("Time (s)")
+plt.ylabel("Energy (J)")
+plt.title("E(t)")
+plt.grid(True)
+plt.show()
+
+# Create a 3D trajectory plot
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection="3d")
+ax.plot(x_values, y_values, t_values)
+ax.set_xlabel("x (m)")
+ax.set_ylabel("y (m)")
+ax.set_zlabel("Time (s)")
+ax.set_title("Trajectory of mass")
+plt.show()
+
+# Set up animated 3D plot
+fig = plt.figure(figsize=(10, 8))
+ax = fig.add_subplot(111, projection="3d")
+ax.set_xlabel("x (m)")
+ax.set_ylabel("y (m)")
+ax.set_zlabel("Time (s)")
+ax.set_title("Animated 3D Trajectory")
+
+line, = ax.plot([], [], [], lw=2, label="Trajectory")
+point, = ax.plot([], [], [], "ro", markersize=5, label="Mass")
+
+ax.set_xlim(np.min(x_values) - 0.1, np.max(x_values) + 0.1)
+ax.set_ylim(np.min(y_values) - 0.1, np.max(y_values) + 0.1)
+ax.set_zlim(t_values[0], t_values[-1])
+
+
+def init_anim():
+    line.set_data([], [])
+    line.set_3d_properties([])
+    point.set_data([], [])
+    point.set_3d_properties([])
+    return line, point
+
+
+def update_anim(i):
+    line.set_data(x_values[:i], y_values[:i])
+    line.set_3d_properties(t_values[:i])
+    point.set_data([x_values[i]], [y_values[i]])
+    point.set_3d_properties([t_values[i]])
+    return line, point
+    anim = FuncAnimation(
+    fig,
+    update_anim,
+    frames=N,
+    init_func=init_anim,
+    interval=20,
+    blit=False
+)
+
+plt.legend()
+plt.show()
+
+# Save the animation
+anim.save("media/trajectory.gif", writer="pillow")
+'''
+
+(src_dir / "rotating_spring_mass.py").write_text(code, encoding="utf-8")
+
+# Add a small placeholder README for the media folder explaining the MP4 must be supplied.
+(media_dir / "README.md").write_text(
+    "# Animation files\n\n"
+    "Place the MP4 animation generated for this project here as trajectory.mp4.\n"
+    "The PDF report references an animation as an attachment, but that MP4 file was not included in the uploaded PDF.\n",
+    encoding="utf-8",
+)
+
+# Zip the ready-to-upload project bundle.
+zip_path = Path("/mnt/data/rotating-spring-mass-github.zip")
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for path in base.rglob("*"):
+        if path.is_file():
+            z.write(path, path.relative_to(base.parent))
+
+print(f"README created: {base / 'README.md'}")
+print(f"GitHub project bundle created: {zip_path}")
+print(f"Figures included: {len(list(fig_dir.iterdir()))}")
