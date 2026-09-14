@@ -214,7 +214,7 @@ Below are the figures corresponding to different parameter sets and initial cond
 
 #### Trajectory video (MP4)
 
-<video src="figures/initial conditions (vid).mp4" controls width="100%"></video>
+https://github.com/user-attachments/assets/9c963e76-f8e7-4a6d-8ebd-96bdc83b8a69
 
 ---
 
