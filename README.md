@@ -210,7 +210,7 @@ Below are the figures corresponding to different parameter sets and initial cond
 
 #### Trajectory figure
 
-![Initial conditions trajectory](figures/Initial_conditions_trajectory_of_mass.png)
+<img src="figures/Initial conditions (trajectory of mass).png" alt="Initial conditions trajectory of mass" />
 
 #### Trajectory video (MP4)
 
