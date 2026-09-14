@@ -214,7 +214,7 @@ Below are the figures corresponding to different parameter sets and initial cond
 
 #### Trajectory video (MP4)
 
-[Trajectory of mass — baseline (MP4)](videos/trajectory_m1_k10_L0.5_O1_r0_0.4_v0_0.1.mp4)
+<video src="figures/initial conditions (vid).mp4" controls width="100%"></video>
 
 ---
 
